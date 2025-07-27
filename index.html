@@ -1,10 +1,160 @@
+<!DOCTYPE html>
+
 <head>
-<title> My First Web Page </title>
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-<h1> What is HTML </html>
-<p> HTML is a Markup Language used to design Frontend. </p>
-<pre> Presented by : Champion </pre>
+  <div class="header">
+    <h1>Welcome to my Portfolio page</h1>
+  </div>
+
+  <div class="nav-bar">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button id="toggle-dark" class="dark-btn">🌙</button>
+    </nav>
+  </div>
+
+  <section id="home" class="profile-section">
+    <div class="profile-box">
+      <img src="My Photo.jpeg" alt="My Photo" class="profile-pic">
+      <h1>Hello, I'm Champion Kumar.</h1>
+      <p>I love to learn Web Development.</p>
+      <button class="hire-btn">Hire Me</button>
+    </div>
+  </section>
+
+
+  <section id="about" class="about-section">
+    <h2>👨‍💻 About Me</h2>
+    <p>
+      I'm Champion Kumar, a passionate Frontend Developer learning HTML, CSS, and JavaScript with real projects.
+      I love clean design, responsive layouts, and building beautiful user experiences.
+    </p>
+
+    <h3>🛠 Skills</h3>
+    <div class="skills-container">
+      <div class="skill">💻 HTML</div>
+      <div class="skill">🎨 CSS</div>
+      <div class="skill">🧠 JavaScript</div>
+      <div class="skill">🗃 Git & GitHub</div>
+      <div class="skill">📱 Responsive Design</div>
+      <div class="skill">⚙️ VS Code</div>
+    </div>
+  </section>
+
+  <section id="services" class="services-section">
+    <h2>🧰 My Services</h2>
+
+    <div class="services-container">
+      <div class="service-card">
+        <h3>🌐 Web Design</h3>
+        <p>I create modern and responsive website layouts using HTML & CSS.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>⚙️ Frontend Development</h3>
+        <p>I build interactive user interfaces with clean, efficient code.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>📱 Responsive Design</h3>
+        <p>I ensure websites look great on all screen sizes and devices.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="projects" class="projects-section">
+    <h2>My Projects</h2>
+
+    <div class="projects-container">
+
+      <div class="project-card">
+        <h3>🎨 Portfolio Website</h3>
+        <p>A personal portfolio to showcase my profile and skills.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>📸 Image Gallery</h3>
+        <p>A beautiful gallery built with Flexbox and responsive design.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>💻 Calculator App</h3>
+        <p>A basic calculator built using only HTML, CSS, and JavaScript.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>📩 Contact Me</h2>
+    <form class="contact-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit" class="send-btn">Send Message</button>
+    </form>
+  </section>
+
+
+  <footer class="site-footer">
+    <p>Made with ❤️ by Champion Kumar © 2025</p>
+    <div class="social-links">
+      <a href="#">LinkedIn</a> |
+      <a href="#">GitHub</a>
+    </div>
+  </footer>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-bar a");
+
+      function updateActiveLink() {
+        let currentSectionId = "";
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 130 && rect.bottom >= 130) {
+            currentSectionId = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active-link");
+          if (link.getAttribute("href") === "#" + currentSectionId) {
+            link.classList.add("active-link");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", updateActiveLink);
+      window.addEventListener("load", updateActiveLink); // On page load
+    });
+
+    const toggleBtn = document.getElementById("toggle-dark");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent =
+        document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    });
+  </script>
+
 </body>
+
+</html>
